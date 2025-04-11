@@ -95,7 +95,7 @@ float ErrorMeasurement::computeMaxPixelDiff(const vector<vector<RGB>>& image, in
     return (D_R + D_G + D_B) / 3.0f;
 } 
 
-float entropy(const vector<vector<RGB>>& image, int x, int y, int width, int height)
+float ErrorMeasurement::computeEntropy(const vector<vector<RGB>>& image, int x, int y, int width, int height)
 {
     const int CHANNEL_RANGE = 256;
     array<int, CHANNEL_RANGE> histR{}, histG{}, histB{};
@@ -106,7 +106,7 @@ float entropy(const vector<vector<RGB>>& image, int x, int y, int width, int hei
     }
 
     for (int i = y; i < y + height && i < image.size(); ++i) {
-        for (int j = x; j < x + width && j < image[j].size(); ++j) {
+        for (int j = x; j < x + width && j < image[i].size(); ++j) {
             const RGB& pixel = image[i][j];
             ++histR[pixel.r];
             ++histG[pixel.g];

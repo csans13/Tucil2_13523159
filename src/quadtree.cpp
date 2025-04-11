@@ -182,16 +182,16 @@ float QuadTree::calculateError(const vector<vector<RGB>>& image, int x, int y, i
 {
     switch (method)
     {
-    case Variance:
+    case 0:
         return ErrorMeasurement::computeVariance(image, x, y, width, height);
 
-    case MAD:
+    case 1:
         return ErrorMeasurement::computeMAD(image, x, y, width, height);
 
-    case MaxPixelDiff:
+    case 2:
         return ErrorMeasurement::computeMaxPixelDiff(image, x, y, width, height);
 
-    case Entropy:
+    case 3:
         return ErrorMeasurement::computeEntropy(image, x, y, width, height);
     
     default:
@@ -235,8 +235,8 @@ void QuadTree::reconstructImage(vector<vector<RGB>>& image)
         return;
     }
     reconstructRecursive(root, image);
-    
 }
+
 void QuadTree::reconstructRecursive(QuadTreeNode* node, vector<vector<RGB>>& image)
 {
     if (node->isLeafNode())

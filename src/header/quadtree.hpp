@@ -25,8 +25,7 @@ enum ErrorMethod
     Variance,
     MAD,
     MaxPixelDiff,
-    Entropy,
-    SSIM
+    Entropy
 };
 
 class QuadTreeNode
